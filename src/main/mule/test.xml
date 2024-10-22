@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" 
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+		http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+	<flow name="test" >
+		<http:listener doc:name="Listener" config-ref="api-httpListenerConfig" path="sendfile" outputMimeType="application/json" outputEncoding="UTF-8">
+			<http:response statusCode="200" >
+				<http:body ><![CDATA[#[output application/json --- payload]]]></http:body>
+			</http:response>
+		</http:listener>
+		
+		<logger level="INFO" doc:name="Logger" message="send file process"/>
+
+		<salesforce:query 
+			doc:name="Query" 
+			config-ref="GlobalSalesforceConfig">
+			
+			<salesforce:salesforce-query ><![CDATA[
+				SELECT Id, Name 
+				FROM Miscellaneous_Document__c 
+			]]>
+ 			</salesforce:salesforce-query>
+		</salesforce:query>
+		
+		<logger level="INFO" doc:name="Logger" message="#[payload]"/>
+	</flow>
+	
+</mule>

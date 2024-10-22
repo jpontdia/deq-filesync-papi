@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>078efef1-d139-48ed-92f5-f8d4a0592374</groupId>
+		<artifactId>deq-pom</artifactId>
+		<version>1.0.2</version>
+		<relativePath/>
+	</parent>
+	<groupId>078efef1-d139-48ed-92f5-f8d4a0592374</groupId>
+	<artifactId>deq-filesync-papi-app</artifactId>
+	<version>1.0.0</version>
+	<packaging>mule-application</packaging>
+
+	<name>deq-filesync-papi</name>
+
+	<properties>
+		<!-- Exchange documentation -->
+		<tags>salesforce, laserfiche, filesync, deq, papi</tags>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-objectstore-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
+			<version>10.22.2</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+	</dependencies>
+
+</project>

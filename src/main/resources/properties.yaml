@@ -1,0 +1,64 @@
+# Default environment
+env: local
+
+# Java Keystore for SSL and TLS-Context
+jks:
+  alias: "myAlias"
+  path: "myJksPath"
+  keypassword: "myKeypassword"
+
+# Default HTTP configuration for services
+# CloudHub Reserved Properties - https://help.salesforce.com/s/articleView?id=001118377&type=1
+httpprotocol: "HTTPS"
+http:
+    port: "8081"
+https:
+    # Cloudhub 2 changes this value to 8081
+    port: "8082"
+
+# Service details
+service:
+  group: "${project.groupId}"
+  artifact: "${project.artifactId}"
+  version: "${project.version}"
+  name: "${project.name}"
+
+# The RAML API and autodiscovery
+api:  
+  group: "${restconnector.api.spec.group}"
+  artifact: "${restconnector.api.spec.artifact}"
+  version: "${restconnector.api.spec.version}"
+  spec: "resource::${api.group}:${api.artifact}:${api.version}:raml:zip:api.raml"
+  id: "0"
+
+scheduler:
+  frequency: "30"
+
+objectstore:
+  expiration: "35"
+
+resttool:
+  logexception: "false"
+  
+usps:
+  granttype: "client_credentials"
+  clientid: "myclientid"
+  clientsecret: "mysecret"
+  host: "api.usps.com"
+  port: "443"
+  tokenpath: "/oauth2/v3/token"
+  addresspath: "/addresses/v3/address"
+
+# Salesfoce Connection
+salesforce:
+  consumerkey: "my-consumer-key"
+  keystore: "my-keystore.jks"
+  storepassword: "the-kystore-password"
+  certificatealias: "the-certificate-inside-keystore"
+  principal: "user-in-salesforce"
+  tokenendpoint: "salesforce-token-endpoint"
+  audienceurl: "https://test.salesforce.com-(sandbox)"
+
+events:
+  sendfile: "/event/Send_File_to_Laserfiche__e"
+  retrievefile: "/event/Retrieve_File_from_Laserfiche__e"
