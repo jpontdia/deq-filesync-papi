@@ -10,7 +10,7 @@
 		http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 
 	<flow name="test" >
-		<http:listener doc:name="Listener" config-ref="api-httpListenerConfig" path="sendfile" outputMimeType="application/json" outputEncoding="UTF-8">
+		<http:listener doc:name="/sendfile" config-ref="api-httpListenerConfig" path="sendfile" outputMimeType="application/json" outputEncoding="UTF-8">
 			<http:response statusCode="200" >
 				<http:body ><![CDATA[#[output application/json --- payload]]]></http:body>
 			</http:response>
